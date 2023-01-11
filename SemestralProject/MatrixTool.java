@@ -11,12 +11,13 @@ package semestralproject;
 public class MatrixTool {
 
     /**
-     * 
+     * Creates spirale matrix filled with numbers 1..width*height starting from top left corner
+     *
      * @param width width of matrix
-     * @param height height of amatrix
+     * @param height height of matrix
      * @return spirale matrix with entered size
      */
-    public static int[][] Spirale(int width, int height) {
+    public static int[][] spirale(int width, int height) {
         int[][] matrix = new int[height][width];
         int x = 0;
         int y = 0;
@@ -25,13 +26,13 @@ public class MatrixTool {
         int xBound = 0;
         int yBound = 0;
 
-        for (int i = 0; i < height * width; i++) {
-            matrix[y][x] = i;
+        int topEdge = 1;
+        int rightEdge = width - 1;
+        int botEdge = height - 1;
+        int leftEdge = xBound;
 
-            int topEdge = 1 + yBound;
-            int rightEdge = width - 1 - xBound;
-            int botEdge = height - 1 - yBound;
-            int leftEdge = 0 + xBound;
+        for (int i = 0; i < height * width; i++) {
+            matrix[y][x] = i + 1;
 
             if (y == botEdge && yMovement == 1) {
                 yMovement = 0;
@@ -41,6 +42,11 @@ public class MatrixTool {
                 xMovement = 1;
                 yBound++;
                 xBound++;
+
+                topEdge = 1 + yBound;
+                rightEdge = width - 1 - xBound;
+                botEdge = height - 1 - yBound;
+                leftEdge = 0 + xBound;
             }
 
             if (x == rightEdge && xMovement == 1) {
@@ -59,10 +65,11 @@ public class MatrixTool {
 
     }
 
-    public static void PrintMatrix(int[][] matrix) {
+    public static void printMatrix(int[][] matrix) {
+        int length = (int) (Math.log10(matrix.length * matrix[0].length) + 1);
         for (int row = 0; row < matrix.length; row++) {
             for (int col = 0; col < matrix[row].length; col++) {
-                System.out.printf("%02d ", matrix[row][col]);
+                System.out.printf("%0" + length + "d ", matrix[row][col]);
             }
             System.out.println("");
         }

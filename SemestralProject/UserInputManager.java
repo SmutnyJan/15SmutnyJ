@@ -20,7 +20,14 @@ public class UserInputManager {
         _sc = new Scanner(source);
     }
 
-    public int UserNumberInput(String promptMessage, String failMessage, Predicate<Integer> condition) {
+    /**
+     * Will repeatedly ask user to enter integer until user enters valid input which meets given condition
+     * @param promptMessage message to show when asking for input
+     * @param failMessage message to show when user enters invalid input
+     * @param condition condition which must be met in order to get valid input
+     * @return valid user input
+     */
+    public int userNumberInput(String promptMessage, String failMessage, Predicate<Integer> condition) {
         System.out.print(promptMessage);
         int numberUserInput;
         while (true) {
@@ -39,7 +46,7 @@ public class UserInputManager {
         return numberUserInput;
     }
 
-    public char UserCharInput(String promptMessage) {
+    public char userCharInput(String promptMessage) {
         System.out.print(promptMessage);
         return _sc.next().charAt(0);
     }

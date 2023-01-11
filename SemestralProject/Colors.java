@@ -22,7 +22,7 @@ public class Colors {
         RESET
     }
 
-    public static String GetColorCode(Color color) {
+    public static String getColorCode(Color color) {
         switch (color) {
             case BLACK:
                 return "\u001B[30m";
@@ -47,7 +47,7 @@ public class Colors {
         }
     }
 
-    public static String GetBackgroundCode(Color color) {
+    public static String getBackgroundCode(Color color) {
         switch (color) {
             case BLACK:
                 return "\u001B[40m";

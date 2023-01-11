@@ -17,16 +17,16 @@ public class BuildingDrawer {
     private ArrayList<Integer> Widths = new ArrayList<>();
     private Random rand = new Random();
 
-    public void AddDemand(int size, char wallChar, char roofChar, Colors.Color roofColor, Colors.Color roofBackgroundColor, Colors.Color wallColor, Colors.Color wallBackgroundColor, int localSnowChance) {
+    public void addDemand(int size, char wallChar, char roofChar, Colors.Color roofColor, Colors.Color roofBackgroundColor, Colors.Color wallColor, Colors.Color wallBackgroundColor, int localSnowChance) {
         Widths.add(size + 1); // přidání znaků + jedna mezera
         ArrayList<String> newDemand = new ArrayList<>();
         int roofHeight = size / 2 + (size % 2);
 
-        String roofColorCode = Colors.GetColorCode(roofColor);
-        String wallColorCode = Colors.GetColorCode(wallColor);
-        String roofBackgroundCode = Colors.GetBackgroundCode(roofBackgroundColor);
-        String wallBackgroundCode = Colors.GetBackgroundCode(wallBackgroundColor);
-        String RESET = Colors.GetColorCode(Colors.Color.RESET);
+        String roofColorCode = Colors.getColorCode(roofColor);
+        String wallColorCode = Colors.getColorCode(wallColor);
+        String roofBackgroundCode = Colors.getBackgroundCode(roofBackgroundColor);
+        String wallBackgroundCode = Colors.getBackgroundCode(wallBackgroundColor);
+        String RESET = Colors.getColorCode(Colors.Color.RESET);
 
         String row = "";
         for (int i = 1; i <= roofHeight; i++) {
@@ -65,8 +65,8 @@ public class BuildingDrawer {
         Demands.add(newDemand);
     }
 
-    public void Execute(int localSnowChance) throws InterruptedException {
-        int maxHeight = GetMaxHouseHeight();
+    public void execute(int localSnowChance) throws InterruptedException {
+        int maxHeight = getMaxHouseHeight();
         for (int currentRow = 0; currentRow < maxHeight; currentRow++) {
             String row = "";
             for (int currentDemand = 0; currentDemand < Demands.size(); currentDemand++) {
@@ -91,7 +91,7 @@ public class BuildingDrawer {
         }
     }
 
-    private int GetMaxHouseHeight() {
+    private int getMaxHouseHeight() {
         int max = Demands.get(0).size();
         for (int i = 0; i < Demands.size(); i++) {
             int currentHeight = Demands.get(i).size();

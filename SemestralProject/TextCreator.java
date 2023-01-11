@@ -14,19 +14,19 @@ import java.util.ArrayList;
 
 public class TextCreator {
     
-    public void WriteText(String text) {
+    public void writeText(String text) {
 
         String finalText = "";
         ArrayList<ArrayList<String>> Letters = new ArrayList<>();
         for (int i = 0; i < text.length(); i++) {
             char currentChar = Character.toUpperCase(text.charAt(i));
 
-            Letters.add(Characters.GetCharArray(currentChar));
+            Letters.add(Characters.getCharArray(currentChar));
         }
         int currentLetterIndex = 0;
         int currentRow = 0;
         while (currentRow < Characters.ROWS_COUNT) {
-            finalText += RightPad(Letters.get(currentLetterIndex).get(currentRow), LetterMaxSize(Letters.get(currentLetterIndex)));
+            finalText += rightPad(Letters.get(currentLetterIndex).get(currentRow), letterMaxSize(Letters.get(currentLetterIndex)));
             currentLetterIndex++;
             currentLetterIndex = currentLetterIndex % Letters.size();
 
@@ -39,7 +39,7 @@ public class TextCreator {
         System.out.println(finalText);
     }
     
-    private String RightPad(String text, int length) {
+    private String rightPad(String text, int length) {
         String finalText = "";
         
         for(int i = 0; i < length; i++) {
@@ -54,7 +54,7 @@ public class TextCreator {
         return finalText;
     }
     
-    private int LetterMaxSize(ArrayList<String> letter) {
+    private int letterMaxSize(ArrayList<String> letter) {
         int maxSize = letter.get(0).length();
         for(int i = 1; i < letter.size(); i++) {
             int currentSize = letter.get(i).length();

@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public class Characters {
 
-    public static ArrayList<String> GetCharArray(char character) {
+    public static ArrayList<String> getCharArray(char character) {
         switch (character) {
             case 'A':
                 return A;
